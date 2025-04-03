@@ -1,0 +1,621 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar container */
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1d468;  /* Hitam gelap */
+    color: white;
+    padding: 20px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.navbar .logo h2 {
+    font-size: 24px;
+    color: #790909;  /* Emas (Gold) untuk logo */
+    font-family: 'Georgia', serif; /* Font klasik yang cocok dengan tema Mesir */
+    position: relative;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 254, 254, 0.7), 0 0 30px rgba(255, 255, 255, 0.7); /* Efek cahaya */
+}
+
+/* Tambahkan efek lampu sorot dengan gradien */
+.navbar .logo h2:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 20%, rgba(0, 0, 0, 0.8) 80%);
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+
+/* Navbar links */
+.navbar .navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.navbar .navbar-links li {
+    margin: 0 20px;
+}
+
+.navbar .navbar-links a {
+    color: #690404;  /* Warna emas (Gold) */
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    padding: 12px 20px;  /* Memberikan padding lebih besar untuk efek tombol */
+    position: relative;
+    border: 2px solid transparent; /* Border transparan untuk transisi */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
+    transition: all 0.3s ease; /* Transisi halus untuk efek hover */
+    font-weight: bold;
+    display: inline-block;  /* Pastikan tombol tidak meluas */
+}
+
+/* Hover effect untuk link sebagai tombol */
+.navbar .navbar-links a:hover {
+    
+    color: rgb(53, 7, 7);  /* Mengubah warna teks menjadi putih saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan pada tombol */
+}
+
+/* Hover effect untuk link dengan animasi underline */
+.navbar .navbar-links a::after {
+    content: '';  /* Membuat elemen kosong untuk garis bawah */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;  /* Garis bawah dimulai dari 0% */
+    height: 3px;  /* Ketebalan garis bawah */
+    background-color: #ffbf00;  /* Warna emas terang untuk garis bawah */
+    transition: width 0.4s ease; /* Animasi lebar garis bawah */
+}
+
+.navbar .navbar-links a:hover::after {
+    width: 100%;  /* Garis bawah akan meluas ke seluruh lebar teks */
+}
+
+/* Hamburger Menu */
+.navbar .menu-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;  
+}
+
+.navbar .menu-icon .bar {
+    height: 4px;
+    background-color: #2f1a55;  /* Warna emas (Gold) untuk bar hamburger */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .navbar .navbar-links {
+        list-style: none;
+        margin: 0;
+        flex-direction: column;
+        width: 100%;
+        background-color: hsla(262, 40%, 9%, 0.953);  /* Warna latar belakang menu */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        opacity: 0;
+        text-align: left;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        border-top: 2px solid #000000;  /* Garis atas dengan warna emas (Gold) */
+        
+    }
+    
+
+    .navbar .navbar-links.active {
+        max-height: 300px;  /* Menentukan tinggi maksimal saat menu dibuka */
+        opacity: 1;
+    }
+
+    .navbar .menu-icon {
+        display: flex;
+    }
+
+    .navbar .navbar-links li {
+        margin: 5px 10px;
+        opacity: 0; /* Menyembunyikan link awalnya */
+        transform: translateX(-10px); /* Menggeser link ke kiri */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Animasi opacity dan transform */
+    }
+
+    /* Menambahkan animasi pada setiap item menu ketika menu dibuka */
+    .navbar .navbar-links.active li {
+        opacity: 1;
+        transform: translateX(0); /* Mengembalikan posisi link ke tempat semula */
+    }
+
+    /* Tombol di mobile (Hover tetap sesuai panjang teks) */
+    .navbar .navbar-links a {
+        font-size: 20px;
+        text-decoration: none;
+        color: #f9e231;  /* Warna emas (Gold) */
+        padding: 12px 20px;  /* Padding untuk tombol */
+        display: inline-block;  /* Pastikan tombol tidak meluas */
+        text-align: center;  /* Menjaga teks tetap terpusat */
+        width: auto;  /* Agar panjang tombol disesuaikan dengan panjang teks */
+        
+    }
+
+    /* Tombol hover tetap sesuai panjang teks */
+    .navbar .navbar-links a:hover {
+        color: rgb(248, 235, 96);  /* Mengubah warna teks menjadi putih saat hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan pada tombol */
+    }
+
+    /* Animasi Hamburger */
+    .navbar .menu-icon.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        position: relative;
+        top: 8px;
+    }
+
+    .navbar .menu-icon.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar .menu-icon.active .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        position: relative;
+        top: -8px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px !important; /* Menambah jarak antara navbar dan konten di body */
+    }
+}
+
+
+/* Tombol dengan warna tema Mesir */
+.btn {
+    background-color: #0066cc; /* Biru Mesir */
+    color: white;  /* Teks berwarna putih */
+    padding: 12px 24px;  /* Memberikan ruang pada tombol */
+    text-align: center; 
+    text-decoration: none;  /* Menghilangkan garis bawah pada link */
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 5px;  /* Memberikan sudut melengkung */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Animasi perubahan warna */
+}
+
+.btn:hover {
+    background-color: #ffcc00; /* Warna emas saat hover */
+    color: #003366;  /* Mengubah warna teks saat hover */
+    border-color: #ffcc00;  /* Border berubah ke warna emas saat hover */
+}
+
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(255, 221, 146, 0), rgba(255, 221, 146, 0.966)), 
+    url('aset/pexels-bab2056-26747459.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(3, 0, 12);
+    text-align: center;
+}
+
+.hero-section .hero-content h1 { 
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.hero-section .hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero-section .btn {
+    background-color: #8d1111;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .btn:hover {
+    background-color: #f57c00;
+}
+
+/* Dewa Section */
+.dewa-section {
+    padding: 50px 20px;
+    text-align: center;
+    min-height: 120vh;
+    background-color: #000000;
+}
+
+.dewa-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #f4f4f9;
+}
+
+.dewa-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap; /* Menghindari wrapping item */
+    overflow-x: auto;  /* Menambahkan scroll horizontal */
+    padding-bottom: 10px;  /* Agar scroll tidak tertutup */
+}
+
+.dewa-item {
+    background-color: rgb(255, 244, 208);
+    border: 1px solid #000000;
+    padding: 20px;
+    width: 250px;  /* Ukuran lebar konsisten */
+    min-width: 250px;  /* Memastikan lebar minimum */
+    height: auto;  /* Agar tinggi menyesuaikan dengan konten */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+
+
+.dewa-item img {
+    width: 100%;
+    height: 180px;  /* Sesuaikan dengan tinggi yang diinginkan */
+    object-fit: cover;  /* Menyesuaikan gambar agar memenuhi area kontainer dan memotong bagian yang tidak perlu */
+    object-position: center;  /* Menjaga posisi gambar agar tetap di tengah */
+    border-radius: 5px;
+}
+
+.dewa-item h3 {
+    font-size: 1.8em;
+    margin-top: 15px;
+    color: #000000;
+}
+
+.dewa-item p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    flex-grow: 1; /* Agar teks tidak mendorong tombol ke bawah */
+    color: #000000;
+}
+
+.dewa-item .btn {
+    padding: 8px 15px;
+    background-color: #6e0707;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;  /* Memberikan jarak antara teks dan tombol */
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .dewa-container {
+        gap: 10px;
+    }
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    justify-content: center;  /* Mengatur posisi horizontal di tengah */
+    align-items: center;      /* Mengatur posisi vertikal di tengah */
+    padding: 50px 20px;
+    background-color: #ffdd92;
+    text-align: center;
+    color: #160020;
+    min-height: 120vh;
+    flex-direction: column;   /* Mengatur agar elemen anak disusun secara vertikal */
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px; /* Kurangi jarak bawah judul */
+}
+
+.about-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-top: 10px; /* Kurangi jarak atas teks */
+}
+
+
+
+/* About Section */
+.caption-section {
+    display: flex;
+    justify-content: center;  /* Mengatur posisi horizontal di tengah */
+    align-items: center;      /* Mengatur posisi vertikal di tengah */
+    padding: 50px 20px;
+    background-image: 
+    linear-gradient(to top, rgba(255, 221, 146, 0) 20%, rgb(255, 221, 146) 80%), /* Gradasi bawah */
+    linear-gradient(to bottom, rgba(39, 29, 60, 0) 30%, rgb(0, 0, 0) 90%),/* Gradasi atas */
+    url('aset/pexels-diego-f-parra-33199-15238869.jpg'); /* Gambar */
+    color: #191424;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    min-height: 120vh;
+    flex-direction: column;   /* Mengatur agar elemen anak disusun secara vertikal */
+}
+
+.caption-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.caption-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+
+
+html {
+    scroll-behavior: smooth; /* Menambahkan smooth scroll ke seluruh halaman */
+}
+
+
+
+/* Styling untuk link */
+a {
+    color: inherit; /* Ikuti warna teks induk */
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: #2270a4;
+    font-weight: bold ;
+}
+
+/* Opsional: Styling saat hover */
+a:hover {
+    color: #000000; /* Ubah warna saat hover jika diinginkan */
+}
+
+
+
+
+
+
+
+
+/* Ukuran teks normal untuk versi desktop */
+.about-section p {
+    font-size: 1.2rem; /* Ukuran teks default untuk desktop */
+    line-height: 1.6;
+}
+
+/* Media Query untuk versi mobile */
+@media (max-width: 768px) {
+    .about-section p {
+        font-size: 0.9rem; /* Ukuran teks lebih kecil untuk mobile */
+        line-height: 1.4;
+    }
+}
+
+/* Ukuran teks normal untuk versi desktop */
+.caption-section p {
+    font-size: 1.2rem; /* Ukuran teks default untuk desktop */
+    line-height: 1.6;
+}
+
+/* Media Query untuk versi mobile */
+@media (max-width: 768px) {
+    .caption-section p {
+        font-size: 0.9rem; /* Ukuran teks lebih kecil untuk mobile */
+        line-height: 1.4;
+    }
+}
+
+
+
+
+/* Media Query untuk versi mobile */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem !important; /* Ukuran teks lebih kecil untuk judul di mobile */
+    }
+
+    .hero-section p {
+        font-size: 1rem !important; /* Ukuran teks lebih kecil untuk paragraf di mobile */
+    }
+
+    /* Menyesuaikan ukuran tombol jika diperlukan */
+    .hero-section .btn {
+        font-size: 1rem !important; /* Ukuran tombol lebih kecil di mobile */
+    }
+}
+
+
+
+
+
+.fade-in-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+.footer {
+    background: #2e2869;
+    color: #ffb968;
+    padding: 40px 20px;
+    text-align: center;
+    
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ffeb54;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.sosmed-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.sosmed-links img {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.sosmed-links img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+
+/* Overlay Loading */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(37, 9, 9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Animasi Spartan Lempar Tombak */
+.loading-spartan {
+    width: 150px;
+    height: auto;
+    animation: throw-spear 1s infinite alternate ease-in-out;
+}
+
+/* Efek Animasi Lempar Tombak */
+@keyframes throw-spear {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(20px) rotate(-10deg);
+    }
+}
+
+
+
+.translate-container {
+    margin-left: 20px;
+}
+
+
